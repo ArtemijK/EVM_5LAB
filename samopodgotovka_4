@@ -1,0 +1,21 @@
+#include "pch.h"
+#include <iostream>
+int i;
+short int m;
+int main()
+{
+	using namespace std;
+	cout << "Enter a1, a2, b1, b2" << endl;
+	int a1, a2, b1, b2, a3, b3;
+	cin >> a1 >> a2 >> b1 >> b2;
+	_asm { // Наша ассемблерная вставка
+		mov EAX, a1; // помещаем значение a1 в EAX
+		add EAX, a2; // складываем значение a2 с EAX
+		mov a3, EAX; // запись EAX в a3
+		mov EAX, b1; // помещаем значение b1 в EAX
+		add EAX, b2; // складываем значение b2 в EAX
+		mov b3, EAX; // запись EAX в b3
+		
+	};
+	cout <<"RESULT " << a3 << b3 << endl; // вывод полученного числа
+}
